@@ -85,14 +85,11 @@ namespace FluentAssertions.Tests
             user.ShouldBe().MappedFrom(userDto);
         }
 
-        private UserDto CreateTestData()
+        private UserDto CreateTestData() => new UserDto
         {
-            return new UserDto
-            {
-                FirstName = "John",
-                LastName = "Smith",
-                Address = "Rzeszow"
-            };
-        }
+            FirstName = "John",
+            LastName = "Smith",
+            Address = "Rzeszow"
+        };
     }
 }

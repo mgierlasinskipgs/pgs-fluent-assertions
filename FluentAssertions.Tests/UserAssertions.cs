@@ -11,7 +11,7 @@ namespace FluentAssertions.Tests
             Subject = instance;
         }
 
-        public virtual AndConstraint<UserAssertions> EqualTo(User expected)
+        public AndConstraint<UserAssertions> EqualTo(User expected)
         {
             Subject.Should().NotBeNull();
             Subject.Id.Should().BePositive();
@@ -21,7 +21,7 @@ namespace FluentAssertions.Tests
             return new AndConstraint<UserAssertions>(this);
         }
 
-        public virtual AndConstraint<UserAssertions> MappedFrom(UserDto userDto)
+        public AndConstraint<UserAssertions> MappedFrom(UserDto userDto)
         {
             Subject.Should().NotBeNull();
             Subject.Should().BeEquivalentTo(userDto, options => options
