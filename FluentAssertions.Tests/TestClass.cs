@@ -18,7 +18,7 @@ namespace FluentAssertions.Tests
             // Assert
             Assert.AreEqual(user.FirstName, userDto.FirstName);
             Assert.AreEqual(user.LastName, userDto.LastName);
-            Assert.AreEqual(user.Address, userDto.Address);
+            Assert.AreEqual(user.Address, userDto.City);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace FluentAssertions.Tests
             // Assert
             user.FirstName.Should().Be(userDto.FirstName);
             user.LastName.Should().Be(userDto.LastName);
-            user.Address.Should().Be(userDto.Address);
+            user.Address.Should().Be(userDto.City);
         }
 
         [Test]
@@ -50,9 +50,11 @@ namespace FluentAssertions.Tests
             // Assert
             user.Should().NotBeNull();
             user.Should().BeEquivalentTo(userDto, options => options
+                .Excluding(x => x.City)
                 .Excluding(x => x.CustomProperty1)
                 .Excluding(x => x.CustomProperty2)
                 .Excluding(x => x.CustomProperty3));
+            user.Address.Should().Be(userDto.City);
         }
 
         [Test]
@@ -69,6 +71,7 @@ namespace FluentAssertions.Tests
             user.Should().NotBeNull();
             user.Should().BeEquivalentTo(userDto, options => options
                 .ExcludingMissingMembers());
+            user.Address.Should().Be(userDto.City);
         }
 
         [Test]
@@ -89,7 +92,7 @@ namespace FluentAssertions.Tests
         {
             FirstName = "John",
             LastName = "Smith",
-            Address = "Rzeszow"
+            City = "Rzeszow"
         };
     }
 }

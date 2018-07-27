@@ -8,7 +8,7 @@
             {
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
-                Address = userDto.Address
+                Address = userDto.City
             };
         }
     }

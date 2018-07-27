@@ -26,6 +26,7 @@ namespace FluentAssertions.Tests
             Subject.Should().NotBeNull();
             Subject.Should().BeEquivalentTo(userDto, options => options
                 .ExcludingMissingMembers());
+            Subject.Address.Should().Be(userDto.City);
 
             return new AndConstraint<UserAssertions>(this);
         }
